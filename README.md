@@ -36,7 +36,7 @@ This is a simple AndroidDateTime-Utils library that helps you to change your dat
 
 ```groovy
     dependencies {
-    implementation 'com.github.TecOrb-Developers:AndroidDateTimeUtils:v1.0.0'
+    implementation 'com.github.TecOrb-Developers:AndroidDateTimeUtils:v1.0.2'
 }
 ```
 
