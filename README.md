@@ -87,13 +87,13 @@ DateTimeUtils.formatWithStyle(Date(), DateTimeStyleType.SHORT) // 11/14/22
 
 #### Date string to localized date
 ```
-DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyle.FULL) // Monday, November 14, 2022
+DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyleType.FULL) // Monday, November 14, 2022
 
-DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyle.LONG) // November 14, 2022
+DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyleType.LONG) // November 14, 2022
 
-DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyle.MEDIUM) // Nov 14, 2022
+DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyleType.MEDIUM) // Nov 14, 2022
 
-DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyle.SHORT) // 11/14/22
+DateTimeUtils.formatWithStyle("2017-06-13", DateTimeStyleType.SHORT) // 11/14/22
 ```
 ### 3. formatWithPattern
 `formatWithPattern` allow to define your own parse pattern following SimpleDateFormat scheme
