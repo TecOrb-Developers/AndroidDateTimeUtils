@@ -39,4 +39,5 @@ object DateTimeFormat {
     const val DATETIME_FORMAT_16 = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     const val DATETIME_FORMAT_17 = "yyyy.MM.dd G 'at' HH:mm:ss z"
     const val DATETIME_FORMAT_18 = "yyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    const val DATETIME_FORMAT_19 = "EEEE, MMMM dd, yyyy"
 }

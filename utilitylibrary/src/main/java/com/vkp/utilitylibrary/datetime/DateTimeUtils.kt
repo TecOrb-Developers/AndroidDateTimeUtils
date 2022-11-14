@@ -265,19 +265,17 @@ object DateTimeUtils {
         return DateFormat.format(mDateFormat, date).toString()
     }
 
-    /*fun formatDateFromDateString(inputDateFormat: String, outputDateFormat: String, inputDate: Date): Date? {
-        val mInputDateFormat = SimpleDateFormat(inputDateFormat, Locale.getDefault())
-        val mOutputDateFormat = SimpleDateFormat(outputDateFormat, Locale.getDefault())
-        return mOutputDateFormat.format(mInputDateFormat.parse(inputDate))
-    }*/
-
-
     // Convert one date format string  to another date format string in android
     @Throws(ParseException::class)
-    fun formatDateFromDateString(inputDateFormat: String, outputDateFormat: String, inputDate: String): String? {
+    fun formatDateFromDateStringOrObject(inputDateFormat: String, outputDateFormat: String, inputDate: String): String? {
         val mInputDateFormat = SimpleDateFormat(inputDateFormat, Locale.getDefault())
         val mOutputDateFormat = SimpleDateFormat(outputDateFormat, Locale.getDefault())
         return mOutputDateFormat.format(mInputDateFormat.parse(inputDate) as Date)
+    }
+
+    fun formatDateFromDateStringOrObject(inputDateFormat: String, outputDateFormat: String, inputDate: Date):String?{
+        val dateString = formatDate(inputDate,Locale.getDefault())
+        return dateString?.let { formatDateFromDateStringOrObject(inputDateFormat, outputDateFormat, it) }
     }
 
     // Get date string from seconds
@@ -287,12 +285,17 @@ object DateTimeUtils {
     }
 
     @Throws(ParseException::class)
-    fun getMaxDateFromTwoDatesString(createdDate: String, updatedDate: String, dateFormat: String): String? {
+    fun getMaxDateFromTwoDateObjOrString(createdDate: String, updatedDate: String, dateFormat: String): String? {
         val mDateFormat = SimpleDateFormat(dateFormat, Locale.getDefault())
         val mCreatedDate = mDateFormat.parse(createdDate) as Date
         val mUpdatedDate = mDateFormat.parse(updatedDate) as Date
         val mMaxDate = max(mCreatedDate, mUpdatedDate)
         return mDateFormat.format(mMaxDate)
+    }
+
+    fun getMaxDateFromTwoDateObjOrString(createdDate: Date, updatedDate: Date, dateFormat: String): String {
+        val mMaxDate = max(createdDate, updatedDate)
+        return dateFormat.format(mMaxDate)
     }
 
     /**

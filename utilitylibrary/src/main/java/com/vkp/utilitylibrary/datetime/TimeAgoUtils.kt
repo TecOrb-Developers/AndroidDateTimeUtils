@@ -56,9 +56,9 @@ object TimeAgoUtils {
     }
 
     @Throws(ParseException::class)
-    fun getTimeAgo(context: Context, timeString: String?, simpleDateFormat: String?): String? {
+    fun getTimeAgo(context: Context, dateString: String, dateFormat: String): String? {
         val now = System.currentTimeMillis()
-        var time = timestampToMilli(context, timeString, simpleDateFormat)
+        var time = timestampToMilli(context, dateString, dateFormat)
         if (time < 1000000000000L) {
             time *= 1000
         }
@@ -70,13 +70,13 @@ object TimeAgoUtils {
         return if (diff < MINUTE_MILLIS) {
             "just now"
         } else if (diff < 2 * MINUTE_MILLIS) {
-            "1 min ago"
+            "1 minute ago"
         } else if (diff < 50 * MINUTE_MILLIS) {
-            "${diff / MINUTE_MILLIS} min ago"
+            "${diff / MINUTE_MILLIS} minutes ago"
         } else if (diff < 90 * MINUTE_MILLIS) {
-            "1 hr ago"
+            "1 hour ago"
         } else if (diff < 24 * HOUR_MILLIS) {
-            "${diff / HOUR_MILLIS} hrs ago"
+            "${diff / HOUR_MILLIS} hours ago"
         } else if (diff < 7 * DAY_MILLIS) {
             if ((diff / DAY_MILLIS).toString() == "1") {
                 "1 day ago"
@@ -101,12 +101,12 @@ object TimeAgoUtils {
     }
 
     @Throws(ParseException::class)
-    fun timestampToMilli(context: Context, timestamp: String?, simpleDateFormat: String?): Long {
+    fun timestampToMilli(context: Context, timestamp: String, simpleDateFormat: String): Long {
         val desiredFormat = SimpleDateFormat(
             simpleDateFormat,
             context.resources.configuration.locale
         )
-        val date = timestamp?.let { desiredFormat.parse(it) }!!
+        val date = timestamp.let { desiredFormat.parse(it) }!!
         return date.time
     }
 }
